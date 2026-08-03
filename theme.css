@@ -1,0 +1,29 @@
+:root{
+    /*colors*/
+    --bg-primary-color:rgba(255, 255, 255, 0.842);
+    --bg-secondary-color:rgba(255, 255, 255, 0.573);
+
+    /*Padding*/
+    --padding-sm:1rem;
+    --padding-md:1.25rem;
+    --padding-lg:2rem;
+    --padding-xlg:2.25rem;
+    --padding-3xlg:3rem;
+
+    /*Margin*/
+    --margin-sm:1rem;
+    --margin-md:1.25rem;
+    --margin-lg:2rem;
+    --margin-xlg:2.25rem;
+    --margin-3xlg:3rem;
+
+    /*Border radius*/
+    --border-radius-sm:1rem;
+    --border-radius-md:1.25rem;
+    --border-radius-lg:2rem;
+    --border-radius-xlg:2.25rem;
+    --border-radius-3xlg:3rem;
+
+
+
+}

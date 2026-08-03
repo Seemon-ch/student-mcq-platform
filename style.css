@@ -1,0 +1,32 @@
+*{
+    margin:0;
+    padding:0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box ;
+}
+html,body{
+    background-color: var(--bg-primary-color);
+}
+.fixedHeader{
+    background-color:var(--bg-secondary-color);
+    border-radius:var(--border-radius-md);
+    width:100%;
+}
+.fixedHeader .heading{
+    font-weight:600;
+    font-size:1.5rem;
+    color: linear-gradient(135deg , blue , purple);
+    
+}
+.navOptions ul{
+    display:flex;
+    justify-content: space-around;
+    gap:1rem;
+    list-style:none;
+    font-size:1rem;
+    opacity:0.5;
+
+}
+.navOptions ul:hover{
+    opacity:1;
+}

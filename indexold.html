@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student MCQ Practice & Contribution Platform</title>
+    <link rel="stylesheet" href="styleold.css">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+<body class="bg-gray-50">
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 w-full bg-white shadow-lg z-50 fade-in">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-2xl font-bold gradient-text">MCQ Platform</h1>
+                </div>
+                <div class="flex space-x-4">
+                    <button onclick="showSection('home')" class="px-4 py-2 text-gray-700 hover:text-purple-600 transition-colors">Home</button>
+                    <button onclick="showSection('practice')" class="px-4 py-2 text-gray-700 hover:text-purple-600 transition-colors">Practice</button>
+                    <button onclick="showSection('admin')" class="px-4 py-2 text-gray-700 hover:text-purple-600 transition-colors">Admin</button>
+                    <button onclick="showSection('about')" class="px-4 py-2 text-gray-700 hover:text-purple-600 transition-colors">About</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home" class="section gradient-bg">
+        <div class="max-w-6xl mx-auto text-center text-white">
+            <div class="fade-in">
+                <div class="mb-8 float">
+                    <svg class="w-24 h-24 mx-auto" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"/>
+                    </svg>
+                </div>
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 slide-in-left">Student MCQ Practice Platform</h1>
+                <p class="text-xl md:text-2xl mb-8 slide-in-right">Master your exams with daily practice questions</p>
+                <div class="flex justify-center space-x-4 scale-in">
+                    <button onclick="showSection('practice')" class="ripple bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all transform hover:scale-110">
+                        Start Practice
+                    </button>
+                    <button onclick="showSection('about')" class="ripple bg-purple-800 text-white px-8 py-4 rounded-full font-semibold hover:bg-purple-900 transition-all transform hover:scale-110">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+
+            <!-- Features Preview -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-16">
+                <div class="bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-xl hover-lift">
+                    <div class="text-4xl mb-4">📚</div>
+                    <h3 class="text-xl font-semibold mb-2">Daily Practice</h3>
+                    <p class="text-sm">New questions every day</p>
+                </div>
+                <div class="bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-xl hover-lift" style="animation-delay: 0.1s">
+                    <div class="text-4xl mb-4">📊</div>
+                    <h3 class="text-xl font-semibold mb-2">Subject-wise</h3>
+                    <p class="text-sm">Organized by topics</p>
+                </div>
+                <div class="bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-xl hover-lift" style="animation-delay: 0.2s">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-semibold mb-2">Instant Feedback</h3>
+                    <p class="text-sm">Know your answers immediately</p>
+                </div>
+                <div class="bg-white bg-opacity-20 backdrop-blur-lg p-6 rounded-xl hover-lift" style="animation-delay: 0.3s">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="text-xl font-semibold mb-2">Track Progress</h3>
+                    <p class="text-sm">Monitor your improvement</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Section -->
+    <section id="practice" class="section hidden-section bg-gradient-to-br from-blue-50 to-purple-50">
+        <div class="max-w-6xl mx-auto w-full">
+            <div id="subjectSelection" class="fade-in">
+                <h2 class="text-4xl font-bold text-center mb-12 gradient-text">Choose Your Subject</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Science -->
+                    <div onclick="startQuiz('Science')" class="bg-white p-8 rounded-2xl shadow-xl cursor-pointer card-hover">
+                        <div class="text-6xl mb-4 text-center">🔬</div>
+                        <h3 class="text-2xl font-bold text-center mb-2 text-blue-600">Science</h3>
+                        <p class="text-gray-600 text-center" id="science-count">0 questions available</p>
+                    </div>
+                    
+                    <!-- Mathematics -->
+                    <div onclick="startQuiz('Mathematics')" class="bg-white p-8 rounded-2xl shadow-xl cursor-pointer card-hover">
+                        <div class="text-6xl mb-4 text-center">➗</div>
+                        <h3 class="text-2xl font-bold text-center mb-2 text-green-600">Mathematics</h3>
+                        <p class="text-gray-600 text-center" id="mathematics-count">0 questions available</p>
+                    </div>
+                    
+                    <!-- English -->
+                    <div onclick="startQuiz('English')" class="bg-white p-8 rounded-2xl shadow-xl cursor-pointer card-hover">
+                        <div class="text-6xl mb-4 text-center">📖</div>
+                        <h3 class="text-2xl font-bold text-center mb-2 text-purple-600">English</h3>
+                        <p class="text-gray-600 text-center" id="english-count">0 questions available</p>
+                    </div>
+                    
+                    <!-- General Knowledge -->
+                    <div onclick="startQuiz('General Knowledge')" class="bg-white p-8 rounded-2xl shadow-xl cursor-pointer card-hover">
+                        <div class="text-6xl mb-4 text-center">🌍</div>
+                        <h3 class="text-2xl font-bold text-center mb-2 text-orange-600">General Knowledge</h3>
+                        <p class="text-gray-600 text-center" id="general-knowledge-count">0 questions available</p>
+                    </div>
+                    
+                    <!-- Mixed -->
+                    <div onclick="startQuiz('Mixed')" class="bg-gradient-to-br from-purple-500 to-pink-500 p-8 rounded-2xl shadow-xl cursor-pointer card-hover text-white md:col-span-2">
+                        <div class="text-6xl mb-4 text-center">🎲</div>
+                        <h3 class="text-2xl font-bold text-center mb-2">Mixed Questions</h3>
+                        <p class="text-center" id="mixed-count">All subjects combined</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz Interface -->
+            <div id="quizInterface" class="hidden">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-4xl mx-auto">
+                    <!-- Progress Bar -->
+                    <div class="mb-6">
+                        <div class="flex justify-between text-sm text-gray-600 mb-2">
+                            <span>Question <span id="currentQuestion">1</span> of <span id="totalQuestions">10</span></span>
+                            <span>Score: <span id="currentScore">0</span></span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div id="progressBar" class="progress-bar bg-gradient-to-r from-purple-500 to-pink-500 h-3 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Subject Badge -->
+                    <div class="mb-6">
+                        <span id="subjectBadge" class="inline-block bg-purple-100 text-purple-800 px-4 py-2 rounded-full font-semibold"></span>
+                    </div>
+
+                    <!-- Question -->
+                    <div class="mb-8">
+                        <h3 class="text-2xl font-bold mb-6" id="questionText">Question will appear here</h3>
+                        <div id="optionsContainer" class="space-y-4">
+                            <!-- Options will be inserted here -->
+                        </div>
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="flex justify-between items-center">
+                        <button onclick="quitQuiz()" class="ripple bg-red-500 text-white px-6 py-3 rounded-lg hover:bg-red-600 transition-all">
+                            Quit Quiz
+                        </button>
+                        <button id="nextButton" onclick="nextQuestion()" class="ripple bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-all hidden">
+                            Next Question →
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results -->
+            <div id="resultsSection" class="hidden">
+                <div class="bg-white rounded-2xl shadow-2xl p-8 max-w-2xl mx-auto text-center scale-in">
+                    <div class="text-6xl mb-6">🎉</div>
+                    <h2 class="text-4xl font-bold mb-4 gradient-text">Quiz Completed!</h2>
+                    <div class="text-6xl font-bold mb-4" id="finalScore">0/0</div>
+                    <div class="text-xl mb-8" id="scorePercentage">0%</div>
+                    <div class="mb-8">
+                        <div class="w-full bg-gray-200 rounded-full h-4">
+                            <div id="resultProgressBar" class="progress-bar bg-gradient-to-r from-green-400 to-blue-500 h-4 rounded-full" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 mb-8" id="resultMessage">Great job!</p>
+                    <div class="flex justify-center space-x-4">
+                        <button onclick="retryQuiz()" class="ripple bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition-all">
+                            Try Again
+                        </button>
+                        <button onclick="showSection('practice')" class="ripple bg-gray-600 text-white px-8 py-3 rounded-lg hover:bg-gray-700 transition-all">
+                            Choose Another Subject
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Section -->
+    <section id="admin" class="section hidden-section bg-gradient-to-br from-gray-50 to-gray-100">
+        <div class="max-w-4xl mx-auto w-full">
+            <div class="bg-white rounded-2xl shadow-2xl p-8 fade-in">
+                <h2 class="text-4xl font-bold mb-8 gradient-text text-center">Admin Panel</h2>
+                <p class="text-center text-gray-600 mb-8">Add new MCQ questions to the database</p>
+
+                <form id="adminForm" class="space-y-6">
+                    <!-- Subject Selection -->
+                    <div class="slide-in-left">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Subject</label>
+                        <select id="adminSubject" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" required>
+                            <option value="">Select Subject</option>
+                            <option value="Science">Science</option>
+                            <option value="Mathematics">Mathematics</option>
+                            <option value="English">English</option>
+                            <option value="General Knowledge">General Knowledge</option>
+                        </select>
+                    </div>
+
+                    <!-- Question -->
+                    <div class="slide-in-right">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Question</label>
+                        <textarea id="adminQuestion" rows="3" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="Enter your question here" required></textarea>
+                    </div>
+
+                    <!-- Options -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="scale-in">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Option A</label>
+                            <input type="text" id="optionA" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="Option A" required>
+                        </div>
+                        <div class="scale-in" style="animation-delay: 0.1s">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Option B</label>
+                            <input type="text" id="optionB" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="Option B" required>
+                        </div>
+                        <div class="scale-in" style="animation-delay: 0.2s">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Option C</label>
+                            <input type="text" id="optionC" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="Option C" required>
+                        </div>
+                        <div class="scale-in" style="animation-delay: 0.3s">
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Option D</label>
+                            <input type="text" id="optionD" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" placeholder="Option D" required>
+                        </div>
+                    </div>
+
+                    <!-- Correct Answer -->
+                    <div class="slide-in-left">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Correct Answer</label>
+                        <select id="correctAnswer" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all" required>
+                            <option value="">Select Correct Answer</option>
+                            <option value="A">Option A</option>
+                            <option value="B">Option B</option>
+                            <option value="C">Option C</option>
+                            <option value="D">Option D</option>
+                        </select>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="flex justify-center">
+                        <button type="submit" class="ripple bg-gradient-to-r from-purple-600 to-pink-600 text-white px-12 py-4 rounded-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-all transform hover:scale-105">
+                            Add Question
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Statistics -->
+                <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="bg-gradient-to-br from-blue-50 to-blue-100 p-4 rounded-lg text-center hover-lift">
+                        <div class="text-3xl font-bold text-blue-600" id="stat-science">0</div>
+                        <div class="text-sm text-gray-600">Science</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-50 to-green-100 p-4 rounded-lg text-center hover-lift">
+                        <div class="text-3xl font-bold text-green-600" id="stat-mathematics">0</div>
+                        <div class="text-sm text-gray-600">Mathematics</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-purple-50 to-purple-100 p-4 rounded-lg text-center hover-lift">
+                        <div class="text-3xl font-bold text-purple-600" id="stat-english">0</div>
+                        <div class="text-sm text-gray-600">English</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-50 to-orange-100 p-4 rounded-lg text-center hover-lift">
+                        <div class="text-3xl font-bold text-orange-600" id="stat-gk">0</div>
+                        <div class="text-sm text-gray-600">Gen. Knowledge</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section hidden-section bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-5xl font-bold text-center mb-16 gradient-text fade-in">About MCQ Platform</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+                <!-- Problem Statement -->
+                <div class="bg-gradient-to-br from-red-50 to-orange-50 p-8 rounded-2xl shadow-lg hover-lift">
+                    <h3 class="text-2xl font-bold mb-4 text-red-600">Problem Statement</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">•</span>
+                            Difficulty in daily exam practice
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">•</span>
+                            Lack of interactive learning platforms
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-red-500 mr-2">•</span>
+                            Need for subject-wise MCQ preparation
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Objectives -->
+                <div class="bg-gradient-to-br from-blue-50 to-purple-50 p-8 rounded-2xl shadow-lg hover-lift">
+                    <h3 class="text-2xl font-bold mb-4 text-blue-600">Objectives</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            Provide daily MCQ practice
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            Help students prepare for exams
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            Encourage collaborative learning
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-blue-500 mr-2">✓</span>
+                            Make learning interactive and engaging
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="bg-gradient-to-r from-purple-100 to-pink-100 p-8 rounded-2xl shadow-lg mb-12 scale-in">
+                <h3 class="text-3xl font-bold mb-6 text-center gradient-text">Platform Features</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-xl">
+                        <div class="text-4xl mb-3">📝</div>
+                        <h4 class="font-semibold mb-2">Daily Practice</h4>
+                        <p class="text-sm text-gray-600">Fresh questions uploaded regularly</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl">
+                        <div class="text-4xl mb-3">📚</div>
+                        <h4 class="font-semibold mb-2">Subject-wise Quizzes</h4>
+                        <p class="text-sm text-gray-600">Organized by Science, Math, English, GK</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl">
+                        <div class="text-4xl mb-3">🎯</div>
+                        <h4 class="font-semibold mb-2">Instant Verification</h4>
+                        <p class="text-sm text-gray-600">Know your answers immediately</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl">
+                        <div class="text-4xl mb-3">🎲</div>
+                        <h4 class="font-semibold mb-2">Mixed Mode</h4>
+                        <p class="text-sm text-gray-600">Practice questions from all subjects</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl">
+                        <div class="text-4xl mb-3">👤</div>
+                        <h4 class="font-semibold mb-2">User-friendly</h4>
+                        <p class="text-sm text-gray-600">Simple and intuitive interface</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl">
+                        <div class="text-4xl mb-3">⚡</div>
+                        <h4 class="font-semibold mb-2">Fast & Responsive</h4>
+                        <p class="text-sm text-gray-600">Optimized for all devices</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Technology Stack -->
+            <div class="bg-gradient-to-br from-gray-800 to-gray-900 text-white p-8 rounded-2xl shadow-lg mb-12 slide-in-left">
+                <h3 class="text-3xl font-bold mb-6 text-center">Technology Stack</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="text-5xl mb-3">🎨</div>
+                        <h4 class="font-semibold mb-2">Frontend</h4>
+                        <p class="text-sm text-gray-300">HTML, CSS, JavaScript, Tailwind CSS</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl mb-3">⚙️</div>
+                        <h4 class="font-semibold mb-2">Backend Logic</h4>
+                        <p class="text-sm text-gray-300">JavaScript (LocalStorage)</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-5xl mb-3">💾</div>
+                        <h4 class="font-semibold mb-2">Data Storage</h4>
+                        <p class="text-sm text-gray-300">Browser LocalStorage</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advantages -->
+            <div class="bg-gradient-to-br from-green-50 to-teal-50 p-8 rounded-2xl shadow-lg mb-12 slide-in-right">
+                <h3 class="text-3xl font-bold mb-6 text-center text-green-700">Advantages</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="text-2xl">✅</div>
+                        <span>Easy to use interface</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-2xl">✅</div>
+                        <span>Improves exam preparation</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-2xl">✅</div>
+                        <span>Time-efficient learning</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-2xl">✅</div>
+                        <span>Encourages self-practice</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-2xl">✅</div>
+                        <span>Free and accessible</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-2xl">✅</div>
+                        <span>No registration required</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Applications -->
+            <div class="bg-gradient-to-br from-yellow-50 to-amber-50 p-8 rounded-2xl shadow-lg mb-12 scale-in">
+                <h3 class="text-3xl font-bold mb-6 text-center text-amber-700">Applications</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-xl">
+                        <h4 class="font-semibold mb-2 text-amber-600">🎓 School Students</h4>
+                        <p class="text-sm text-gray-600">Daily practice for better grades</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl">
+                        <h4 class="font-semibold mb-2 text-amber-600">🏛️ College Students</h4>
+                        <p class="text-sm text-gray-600">Subject-wise preparation for exams</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl">
+                        <h4 class="font-semibold mb-2 text-amber-600">📖 Competitive Exams</h4>
+                        <p class="text-sm text-gray-600">Practice for entrance tests</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl">
+                        <h4 class="font-semibold mb-2 text-amber-600">💻 Online Learning</h4>
+                        <p class="text-sm text-gray-600">Self-paced learning platform</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Future Enhancements -->
+            <div class="bg-gradient-to-br from-indigo-50 to-purple-50 p-8 rounded-2xl shadow-lg mb-12 slide-in-left">
+                <h3 class="text-3xl font-bold mb-6 text-center text-indigo-700">Future Enhancements</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="flex items-center space-x-3">
+                        <div class="text-2xl">🔮</div>
+                        <span>User login and authentication system</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-2xl">🔮</div>
+                        <span>Advanced score tracking and analytics</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-2xl">🔮</div>
+                        <span>Leaderboard and competitions</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-2xl">🔮</div>
+                        <span>Mobile application (iOS & Android)</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-2xl">🔮</div>
+                        <span>Database integration (MongoDB/MySQL)</span>
+                    </div>
+                    <div class="flex items-center space-x-3">
+                        <div class="text-2xl">🔮</div>
+                        <span>AI-powered question recommendations</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Conclusion -->
+            <div class="text-center bg-gradient-to-r from-purple-600 to-pink-600 text-white p-12 rounded-2xl shadow-lg scale-in">
+                <h3 class="text-4xl font-bold mb-4">Conclusion</h3>
+                <p class="text-lg mb-6">The Student MCQ Practice Platform revolutionizes the way students prepare for exams by providing an interactive, engaging, and efficient learning experience. With instant feedback, subject-wise organization, and a user-friendly interface, students can master their subjects and excel in their exams.</p>
+                <button onclick="showSection('practice')" class="ripple bg-white text-purple-600 px-8 py-4 rounded-full font-semibold hover:bg-gray-100 transition-all transform hover:scale-110">
+                    Start Your Journey
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
+    <script>
+        // Data Storage
+        let questions = {
+            'Science': [],
+            'Mathematics': [],
+            'English': [],
+            'General Knowledge': []
+        };
+
+        // Quiz State
+        let currentQuiz = {
+            subject: '',
+            questions: [],
+            currentIndex: 0,
+            score: 0,
+            answered: false
+        };
+
+        // Initialize
+        window.onload = function() {
+            loadQuestionsFromStorage();
+            addSampleQuestions();
+            updateQuestionCounts();
+            updateStats();
+        };
+
+        // Load questions from localStorage
+        function loadQuestionsFromStorage() {
+            const stored = localStorage.getItem('mcqQuestions');
+            if (stored) {
+                questions = JSON.parse(stored);
+            }
+        }
+
+        // Save questions to localStorage
+        function saveQuestionsToStorage() {
+            localStorage.setItem('mcqQuestions', JSON.stringify(questions));
+        }
+
+        // Add sample questions
+        function addSampleQuestions() {
+            if (questions['Science'].length === 0) {
+                questions['Science'] = [
+                    {
+                        question: "What is the chemical symbol for water?",
+                        options: ["H2O", "CO2", "O2", "N2"],
+                        correct: "A"
+                    },
+                    {
+                        question: "What is the powerhouse of the cell?",
+                        options: ["Nucleus", "Mitochondria", "Ribosome", "Chloroplast"],
+                        correct: "B"
+                    },
+                    {
+                        question: "What planet is known as the Red Planet?",
+                        options: ["Venus", "Jupiter", "Mars", "Saturn"],
+                        correct: "C"
+                    },
+                    {
+                        question: "What is the speed of light?",
+                        options: ["300,000 km/s", "150,000 km/s", "450,000 km/s", "600,000 km/s"],
+                        correct: "A"
+                    },
+                    {
+                        question: "Which gas do plants absorb from the atmosphere?",
+                        options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+                        correct: "B"
+                    }
+                ];
+
+                questions['Mathematics'] = [
+                    {
+                        question: "What is 25 × 4?",
+                        options: ["100", "75", "125", "150"],
+                        correct: "A"
+                    },
+                    {
+                        question: "What is the value of π (pi) approximately?",
+                        options: ["2.14", "3.14", "4.14", "5.14"],
+                        correct: "B"
+                    },
+                    {
+                        question: "What is the square root of 144?",
+                        options: ["10", "11", "12", "13"],
+                        correct: "C"
+                    },
+                    {
+                        question: "What is 15% of 200?",
+                        options: ["25", "30", "35", "40"],
+                        correct: "B"
+                    },
+                    {
+                        question: "What is the sum of angles in a triangle?",
+                        options: ["90°", "180°", "270°", "360°"],
+                        correct: "B"
+                    }
+                ];
+
+                questions['English'] = [
+                    {
+                        question: "What is the plural of 'child'?",
+                        options: ["Childs", "Children", "Childes", "Childish"],
+                        correct: "B"
+                    },
+                    {
+                        question: "Which word is a synonym for 'happy'?",
+                        options: ["Sad", "Joyful", "Angry", "Tired"],
+                        correct: "B"
+                    },
+                    {
+                        question: "What type of word is 'quickly'?",
+                        options: ["Noun", "Verb", "Adjective", "Adverb"],
+                        correct: "D"
+                    },
+                    {
+                        question: "Who wrote 'Romeo and Juliet'?",
+                        options: ["Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain"],
+                        correct: "B"
+                    },
+                    {
+                        question: "What is the past tense of 'run'?",
+                        options: ["Runned", "Running", "Ran", "Runs"],
+                        correct: "C"
+                    }
+                ];
+
+                questions['General Knowledge'] = [
+                    {
+                        question: "What is the capital of France?",
+                        options: ["London", "Berlin", "Paris", "Madrid"],
+                        correct: "C"
+                    },
+                    {
+                        question: "How many continents are there?",
+                        options: ["5", "6", "7", "8"],
+                        correct: "C"
+                    },
+                    {
+                        question: "Who painted the Mona Lisa?",
+                        options: ["Van Gogh", "Picasso", "Leonardo da Vinci", "Michelangelo"],
+                        correct: "C"
+                    },
+                    {
+                        question: "What is the largest ocean on Earth?",
+                        options: ["Atlantic", "Indian", "Arctic", "Pacific"],
+                        correct: "D"
+                    },
+                    {
+                        question: "In which year did World War II end?",
+                        options: ["1943", "1944", "1945", "1946"],
+                        correct: "C"
+                    }
+                ];
+
+                saveQuestionsToStorage();
+            }
+        }
+
+        // Section Navigation
+        function showSection(sectionId) {
+            const sections = ['home', 'practice', 'admin', 'about'];
+            sections.forEach(id => {
+                const section = document.getElementById(id);
+                if (id === sectionId) {
+                    section.classList.remove('hidden-section');
+                    section.classList.add('fade-in');
+                } else {
+                    section.classList.add('hidden-section');
+                }
+            });
+
+            // Reset practice section
+            if (sectionId === 'practice') {
+                document.getElementById('subjectSelection').classList.remove('hidden');
+                document.getElementById('quizInterface').classList.add('hidden');
+                document.getElementById('resultsSection').classList.add('hidden');
+                updateQuestionCounts();
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Update question counts
+        function updateQuestionCounts() {
+            document.getElementById('science-count').textContent = 
+                questions['Science'].length + ' questions available';
+            document.getElementById('mathematics-count').textContent = 
+                questions['Mathematics'].length + ' questions available';
+            document.getElementById('english-count').textContent = 
+                questions['English'].length + ' questions available';
+            document.getElementById('general-knowledge-count').textContent = 
+                questions['General Knowledge'].length + ' questions available';
+            
+            const totalQuestions = Object.values(questions).reduce((sum, arr) => sum + arr.length, 0);
+            document.getElementById('mixed-count').textContent = 
+                totalQuestions + ' questions from all subjects';
+        }
+
+        // Start Quiz
+        function startQuiz(subject) {
+            currentQuiz.subject = subject;
+            currentQuiz.currentIndex = 0;
+            currentQuiz.score = 0;
+            currentQuiz.answered = false;
+
+            if (subject === 'Mixed') {
+                currentQuiz.questions = [];
+                Object.values(questions).forEach(subjectQuestions => {
+                    currentQuiz.questions = currentQuiz.questions.concat(subjectQuestions);
+                });
+                shuffleArray(currentQuiz.questions);
+            } else {
+                currentQuiz.questions = [...questions[subject]];
+                shuffleArray(currentQuiz.questions);
+            }
+
+            if (currentQuiz.questions.length === 0) {
+                showNotification('No questions available for this subject!', 'error');
+                return;
+            }
+
+            document.getElementById('subjectSelection').classList.add('hidden');
+            document.getElementById('quizInterface').classList.remove('hidden');
+            document.getElementById('subjectBadge').textContent = subject;
+            document.getElementById('totalQuestions').textContent = currentQuiz.questions.length;
+            
+            displayQuestion();
+        }
+
+        // Shuffle array
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        // Display Question
+        function displayQuestion() {
+            const question = currentQuiz.questions[currentQuiz.currentIndex];
+            document.getElementById('questionText').textContent = question.question;
+            document.getElementById('currentQuestion').textContent = currentQuiz.currentIndex + 1;
+            document.getElementById('currentScore').textContent = currentQuiz.score;
+
+            const progress = ((currentQuiz.currentIndex + 1) / currentQuiz.questions.length) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            const optionLabels = ['A', 'B', 'C', 'D'];
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'quiz-option p-4 border-2 border-gray-300 rounded-lg';
+                optionDiv.innerHTML = `
+                    <span class="font-semibold">${optionLabels[index]}.</span> ${option}
+                `;
+                optionDiv.onclick = () => selectAnswer(optionLabels[index], optionDiv);
+                optionsContainer.appendChild(optionDiv);
+            });
+
+            currentQuiz.answered = false;
+            document.getElementById('nextButton').classList.add('hidden');
+        }
+
+        // Select Answer
+        function selectAnswer(selected, element) {
+            if (currentQuiz.answered) return;
+
+            currentQuiz.answered = true;
+            const question = currentQuiz.questions[currentQuiz.currentIndex];
+            const options = document.querySelectorAll('.quiz-option');
+
+            options.forEach(option => {
+                option.style.pointerEvents = 'none';
+            });
+
+            if (selected === question.correct) {
+                element.classList.add('correct');
+                currentQuiz.score++;
+                showNotification('Correct! 🎉', 'success');
+            } else {
+                element.classList.add('incorrect');
+                options[question.correct.charCodeAt(0) - 65].classList.add('correct');
+                showNotification('Incorrect! The correct answer is highlighted.', 'error');
+            }
+
+            document.getElementById('currentScore').textContent = currentQuiz.score;
+            document.getElementById('nextButton').classList.remove('hidden');
+        }
+
+        // Next Question
+        function nextQuestion() {
+            currentQuiz.currentIndex++;
+            if (currentQuiz.currentIndex < currentQuiz.questions.length) {
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        // Show Results
+        function showResults() {
+            document.getElementById('quizInterface').classList.add('hidden');
+            document.getElementById('resultsSection').classList.remove('hidden');
+
+            const totalQuestions = currentQuiz.questions.length;
+            const percentage = Math.round((currentQuiz.score / totalQuestions) * 100);
+
+            document.getElementById('finalScore').textContent = 
+                `${currentQuiz.score}/${totalQuestions}`;
+            document.getElementById('scorePercentage').textContent = `${percentage}%`;
+            document.getElementById('resultProgressBar').style.width = percentage + '%';
+
+            let message = '';
+            if (percentage >= 90) {
+                message = '🏆 Outstanding! You\'re a master!';
+            } else if (percentage >= 75) {
+                message = '🌟 Excellent work! Keep it up!';
+            } else if (percentage >= 60) {
+                message = '👍 Good job! You\'re doing well!';
+            } else if (percentage >= 40) {
+                message = '📚 Not bad! Keep practicing!';
+            } else {
+                message = '💪 Don\'t give up! Practice makes perfect!';
+            }
+            document.getElementById('resultMessage').textContent = message;
+        }
+
+        // Retry Quiz
+        function retryQuiz() {
+            startQuiz(currentQuiz.subject);
+        }
+
+        // Quit Quiz
+        function quitQuiz() {
+            if (confirm('Are you sure you want to quit the quiz?')) {
+                document.getElementById('quizInterface').classList.add('hidden');
+                document.getElementById('subjectSelection').classList.remove('hidden');
+            }
+        }
+
+        // Admin Form Submit
+        document.getElementById('adminForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const subject = document.getElementById('adminSubject').value;
+            const question = document.getElementById('adminQuestion').value;
+            const optionA = document.getElementById('optionA').value;
+            const optionB = document.getElementById('optionB').value;
+            const optionC = document.getElementById('optionC').value;
+            const optionD = document.getElementById('optionD').value;
+            const correct = document.getElementById('correctAnswer').value;
+
+            const newQuestion = {
+                question: question,
+                options: [optionA, optionB, optionC, optionD],
+                correct: correct
+            };
+
+            questions[subject].push(newQuestion);
+            saveQuestionsToStorage();
+            updateStats();
+            updateQuestionCounts();
+
+            showNotification('Question added successfully! 🎉', 'success');
+            this.reset();
+        });
+
+        // Update Statistics
+        function updateStats() {
+            document.getElementById('stat-science').textContent = questions['Science'].length;
+            document.getElementById('stat-mathematics').textContent = questions['Mathematics'].length;
+            document.getElementById('stat-english').textContent = questions['English'].length;
+            document.getElementById('stat-gk').textContent = questions['General Knowledge'].length;
+        }
+
+        // Show Notification
+        function showNotification(message, type) {
+            const container = document.getElementById('notificationContainer');
+            const notification = document.createElement('div');
+            
+            const bgColor = type === 'success' ? 'bg-green-500' : 'bg-red-500';
+            notification.className = `notification ${bgColor} text-white px-6 py-4 rounded-lg shadow-lg mb-4`;
+            notification.textContent = message;
+            
+            container.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.animation = 'slideInRight 0.5s ease-out reverse';
+                setTimeout(() => {
+                    notification.remove();
+                }, 500);
+            }, 3000);
+        }
+
+        // Add entrance animation on scroll
+        window.addEventListener('scroll', function() {
+            const elements = document.querySelectorAll('.hover-lift');
+            elements.forEach(element => {
+                const position = element.getBoundingClientRect();
+                if (position.top < window.innerHeight && position.bottom >= 0) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        // Initialize hover-lift elements
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.hover-lift');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'all 0.6s ease-out';
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
