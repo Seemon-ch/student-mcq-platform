@@ -1,7 +1,10 @@
 :root{
     /*colors*/
-    --bg-primary-color:rgba(255, 255, 255, 0.842);
-    --bg-secondary-color:rgba(255, 255, 255, 0.573);
+    --bg-primary-color:rgba(250, 246, 246, 0.842);
+    --bg-secondary-color:rgba(229, 232, 230, 0.753);
+    --primary-color:rgb(102, 10, 102);
+    --secondary-color:rgba(34, 34, 124, 0.697);
+    --card-primary-color:rgba(202, 196, 196, 0.262);
 
     /*Padding*/
     --padding-sm:1rem;
@@ -24,6 +27,18 @@
     --border-radius-xlg:2.25rem;
     --border-radius-3xlg:3rem;
 
+    /*Spaces*/
+    --space-sm:1rem;
+    --space-md:1.25rem;
+    --space-lg:2rem;
+    --space-xlg:2.25rem;
+    --space-3xlg:3rem;
 
+    /*sizes*/
+    --sizes-sm:1rem;
+    --sizes-md:1.25rem;
+    --sizes-lg:2rem;
+    --sizes-2lg:3rem;
+    --size-3xlg:3.5rem;
 
 }
