@@ -61,11 +61,10 @@ body{
     background-color:rgba(168, 108, 186, 0.666);      
 }
 .heropart .section-part{
-    margin:var(--space-lg);
+    margin-bottom:var(--margin-3xlg);
 
 }
 .heropart .section-part .logo{
-
     display:flex;
     align-items:center;
     justify-content: center;
@@ -75,6 +74,7 @@ body{
 }
 .heropart .section-part .heading-main{
     color:var(--bg-primary-color);
+    margin-bottom:var(--margin-lg);
 }
 .heropart .section-part .about-main{
     color:rgba(12, 4, 35, 0.951);
@@ -85,6 +85,7 @@ body{
     border-radius:var(--border-radius-lg);
     color: rgb(15, 1, 15);
     border-color:rgb(15, 1, 15);
+    font-size:1.24rem;
 }
 .heropart .section-part .btn.btn-outline-primary:hover{
     background-color:rgb(170, 63, 170);
@@ -92,6 +93,7 @@ body{
 .heropart .section-part .btn.btn-primary{
     background-color: rgb(170, 63, 170);
     border-color:rgb(170, 63, 170);
+    font-size:1.24rem;
 }
 .heropart .section-part .button-part{
     display:flex;
@@ -112,14 +114,16 @@ body{
     box-shadow:0 30px 20px rgba(168, 108, 186, 0.882);
 }
 .heropart .card_part .card_item .card-logo{
-    background: linear-gradient(135deg, rgba(255, 0, 0, 0.525), rgb(4, 197, 4) , rgb(17, 17, 91));
+    text-align:center;
+    background: linear-gradient(135deg, rgb(255, 0, 0), rgba(31, 104, 31, 0.699) , rgb(17, 17, 91));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    font-size:var(--sizes-md);
+    font-size:var(--sizes-lg);
+
     
 }
 .heropart .card_part .card_item h3{
-    color:var(--bg-secondary-color);
+    color:var(--bg-primary-color);
     font-weight:600;
 
 }
@@ -128,14 +132,17 @@ body{
     font-weight:450;
 }
 
+
 @media(max-width:1020px){
     .heropart .section-part{
         flex-wrap:wrap;
     }
     .card_part{
         flex-wrap:wrap;
-        margin:var(--space-md);
-
+        flex-direction:column;
+        margin:var(--space-lg);
+        width:100%;
+        text-align:center;
     }
     .navOptions .options{
         flex-wrap:wrap;
