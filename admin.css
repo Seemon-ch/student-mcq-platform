@@ -1,3 +1,128 @@
+
 form{
-    
+    margin: 1rem auto;
+    border-radius: var(--border-radius-sm);
+    width:60%;
+    background-color:rgba(205, 225, 212, 0.925);
+    display:flex;
+    flex-direction: column;
+    padding:var(--padding-lg);
 }
+form h2{
+    text-align:center;
+    background: linear-gradient(90deg, rgb(255, 0, 0), rgba(31, 104, 31, 0.699) , rgb(17, 17, 91));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+form label{
+    font-weight:500;
+    margin:var(--margin-md);
+}
+form select,
+form input{
+    border:none;
+    background-color: var(--bg-primary-color);
+    height:2.5rem;
+    border-radius:0.3rem;
+    outline: none; 
+}
+form textarea{
+    outline: none; 
+    border-radius:0.3rem;
+    border:none;
+    padding:var(--padding-sm);
+    background-color: rgba(230, 233, 231, 0.978);
+}
+form select,
+form input,
+form textarea{
+    background-color: rgba(230, 233, 231, 0.978);
+}
+form input:focus,
+form textarea:focus,
+form select:focus{
+    box-shadow:0 0 0 2px rgba(0,123,255,0.2);
+}
+form input,
+form textarea
+{
+    padding: 0.75rem;
+}
+main form #button{
+    margin-top:var(--margin-md);
+
+    width:100%;
+    max-width:16rem;
+    height:4rem;
+    margin:1rem auto 0;
+
+    border-radius: 0.5rem;
+    border:none;
+    font-size:1.25rem;
+    font-weight:500;
+    background: linear-gradient(0deg, var(--secondary-color), var(--primary-color));
+    align-self:center;
+    color:#ffffff;
+
+    transition:transform 0.3s ease;
+}
+#button:hover{
+    transform:translateY(-2px);
+}
+form .subjects{
+    margin:var(--margin-lg);
+    display:flex;
+    gap:1rem;
+    justify-content:center;
+}
+form .subjects .subj{
+    min-width:10rem;
+    border-radius: var(--border-radius-sm);  
+}
+form .subjects .subj .content{
+     margin:var(--margin-sm);
+}
+form .subjects .subj p{
+    font-weight: 600;
+    text-align: center;
+    margin:0;
+
+}
+form .subjects .subj .content .count{
+    font-size:2rem;
+}
+form .options{
+    display:flex;
+    gap:var(--space-md);
+}
+form .options .option{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+}
+form .science.subj{
+    background-color: rgb(213, 189, 184);
+}
+form .mathematics.subj{
+    background-color:rgba(80, 146, 101, 0.652);
+}
+form .english.subj{
+    background-color:rgba(189, 183, 107, 0.818);
+}
+form .gk.subj{
+    background-color: rgba(111, 145, 207, 0.781);
+}
+
+@media(max-width:740px){
+    .options {
+        flex-wrap:wrap;
+    }
+
+}
+@media(max-width:1290px){
+    .subjects {
+        flex-wrap:wrap;
+    }
+
+}
+
