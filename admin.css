@@ -125,4 +125,9 @@ form .gk.subj{
     }
 
 }
+@media(max-width:393px){
+    .options .option input{
+        width:100%;
+    }
+}
 

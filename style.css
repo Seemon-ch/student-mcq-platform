@@ -32,7 +32,7 @@ body{
 }
 .fixedHeader .heading{
     font-weight:600;
-    font-size:1.5rem;
+    font-size:1rem;
     background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -81,6 +81,7 @@ body{
     margin:var(--space-lg)
 }
 .heropart .section-part .heading-main{
+    font-size:1.24rem;
     color:var(--bg-primary-color);
     margin-bottom:var(--margin-lg);
 }
@@ -90,18 +91,24 @@ body{
     text-align:center;
 }
 .heropart .section-part .btn.btn-outline-primary{
+    margin:var(--margin-lg);
+    margin-right:0;
     border-radius:var(--border-radius-lg);
+    padding:var(--padding-sm);
     color: rgb(15, 1, 15);
     border-color:rgb(15, 1, 15);
-    font-size:1.24rem;
+    font-size:1rem;
 }
 .heropart .section-part .btn.btn-outline-primary:hover{
     background-color:rgb(170, 63, 170);
 }
 .heropart .section-part .btn.btn-primary{
+    margin:var(--margin-lg);
+    margin-left:0;
+    padding:var(--padding-sm);
     background-color: rgb(170, 63, 170);
     border-color:rgb(170, 63, 170);
-    font-size:1.24rem;
+    font-size:1rem;
 }
 .heropart .section-part .button-part{
     display:flex;
@@ -156,4 +163,15 @@ body{
         flex-wrap:wrap;
     }
 
+}
+@media(max-width:610px){
+    .heropart .section-part .heading-main{
+        text-align: center;
+    }
+}
+@media(max-width:230px){
+    .heropart .section-part .button-part{
+        flex-direction: column;
+        align-items:center;
+    }
 }
