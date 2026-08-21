@@ -110,6 +110,9 @@ body{
     border-color:rgb(170, 63, 170);
     font-size:1rem;
 }
+.heropart .section-part .btn.btn-primary:hover{
+    box-shadow:0 10px 10px #800080;
+}
 .heropart .section-part .button-part{
     display:flex;
     justify-content:center;
