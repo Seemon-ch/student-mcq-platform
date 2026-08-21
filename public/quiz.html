@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz</title>
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+</head>
+<body>
+    <div class="wrapper">
+        <div class="fixedHeader">
+            <div class="headeroptions">
+                <div class="heading">MCQ Practice Platfrom</div>
+                <div class="navOptions">
+                    <ul class="options">
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="practice.html">Practice</a></li>
+                        <li><a href="admin.html">Admin</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <main>
+            <div class="quiz-heading">
+                <h1 id="quizTitle">Quiz</h1>
+            </div>
+
+            <div id="loadingMsg">Loading questions...</div>
+            <div id="errorMsg" class="error-msg" style="display:none;"></div>
+
+            <form id="quizForm" style="display:none;">
+                <div id="questionsContainer"></div>
+                <button type="submit" id="submitQuizBtn">Submit Quiz</button>
+            </form>
+
+            <div id="resultBox" style="display:none;">
+                <h2 id="scoreHeading"></h2>
+                <div id="reviewList"></div>
+                <div class="result-actions">
+                    <a href="practice.html" class="btn btn-outline-primary">Back to Subjects</a>
+                    <button type="button" id="retryBtn" class="btn btn-primary">Retry</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/quiz.js"></script>
+</body>
+</html>

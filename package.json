@@ -1,0 +1,27 @@
+{
+  "name": "mcq-website-miniproject",
+  "version": "1.0.0",
+  "description": "MCQ website for Practice",
+  "homepage": "https://github.com/Seemon-ch/student-mcq-platform#readme",
+  "bugs": {
+    "url": "https://github.com/Seemon-ch/student-mcq-platform/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Seemon-ch/student-mcq-platform.git"
+  },
+  "license": "ISC",
+  "author": "seemon",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.23.4"
+  }
+}

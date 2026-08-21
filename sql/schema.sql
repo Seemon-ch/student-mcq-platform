@@ -1,0 +1,23 @@
+CREATE DATABASE IF NOT EXISTS mcq_platform ;
+USE mcq_platform;
+
+CREATE TABLE IF NOT EXISTS questions(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    subject VARCHAR(50) NOT NULL,
+    question TEXT NOT NULL,
+    option1 VARCHAR(255) NOT NULL,
+    option2 VARCHAR(255) NOT NULL,
+    option3 VARCHAR(255) NOT NULL,
+    option4 VARCHAR(255) NOT NULL,
+    correct_option TINYINT NOT NULL CHECK (correct_option BETWEEN 1 AND 4),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+);
+
+CREATE TABLE IF NOT EXISTS attempts(
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    subject VARCHAR(50) NOT NULL,
+    score INT NOT NULL,
+    total INT NOT NULL,
+    taken_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
