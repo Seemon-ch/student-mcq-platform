@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../config/db');
+
 const VALID_SUBJECTS = ['science', 'mathematics', 'english', 'general-knowledge'];
 
+// GET /api/practice/:subject -> quiz questions WITHOUT correct answers
 router.get('/:subject', async (req, res) => {
     try {
         const { subject } = req.params;
@@ -35,6 +37,7 @@ router.get('/:subject', async (req, res) => {
     }
 });
 
+// POST /api/practice/submit -> score a submitted quiz
 router.post('/submit', async (req, res) => {
     try {
         const { subject, answers } = req.body;
@@ -45,23 +48,18 @@ router.post('/submit', async (req, res) => {
 
         const questionIds = answers.map(a => a.questionId);
         const [rows] = await pool.query(
-            `SELECT id, correct_option, question FROM questions WHERE id IN (?)`,
+            `SELECT id, correct_option FROM questions WHERE id IN (?)`,
             [questionIds]
         );
 
-        const correctMap = new Map(rows.map(r => [r.id, r]));
+        const correctMap = new Map(rows.map(r => [r.id, r.correct_option]));
         let score = 0;
 
         const results = answers.map(a => {
-            const correctRow = correctMap.get(a.questionId);
-            const isCorrect = correctRow && correctRow.correct_option === Number(a.selectedOption);
+            const correctOption = correctMap.get(a.questionId);
+            const isCorrect = correctOption === Number(a.selectedOption);
             if (isCorrect) score++;
-            return {
-                questionId: a.questionId,
-                selectedOption: a.selectedOption,
-                correctOption: correctRow ? correctRow.correct_option : null,
-                isCorrect: Boolean(isCorrect)
-            };
+            return { questionId: a.questionId, selectedOption: a.selectedOption, correctOption, isCorrect };
         });
 
         await pool.query(

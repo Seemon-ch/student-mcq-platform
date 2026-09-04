@@ -25,12 +25,13 @@
                 </div>
             </div>
         </div>
-            <form action="/" method="post">
+            <form id="addQuestionForm">
 
                 <h2>ADD A NEW QUESTION</h2>
+                <div id="formMessage" style="text-align:center; font-weight:600; min-height:1.5rem;"></div>
                 <label for="subject">Subject:</label>
                 <select id="subject"  name="subject">
-                    <option selected disabled >Choose Subject</option>
+                    <option selected disabled value="">Choose Subject</option>
                     <option value="science">Science</option>
                     <option value="mathematics">Mathematics</option>
                     <option value="general-knowledge">General Knowledge</option>
@@ -41,50 +42,50 @@
                 <div class="options">
                     <div class="option">
                         <label for="option1">Option A:</label>
-                        <input type="text" placeholder="Option A" name="option1">
+                        <input type="text" placeholder="Option A" name="option1" id="option1">
                         <label for="option2">Option B:</label>
-                        <input type="text" placeholder="Option B" name="option2">
+                        <input type="text" placeholder="Option B" name="option2" id="option2">
                     </div>
                     <div class="option">
                         <label for="option3">Option C:</label>
-                        <input type="text" placeholder="Option C" name="option3">
+                        <input type="text" placeholder="Option C" name="option3" id="option3">
                         <label for="option4">Option D:</label>
-                        <input type="text" placeholder="Option C" name="option4">
+                        <input type="text" placeholder="Option D" name="option4" id="option4">
                     </div>
                 </div>
                 <label for="correct-option">Correct Answer:</label>
                 <select id="correct-option"  name="correct-option">
-                    <option selected disabled>Choose correct option</option>
-                    <option value="Option1">Option A</option>
-                    <option value="Option2">Option B</option>
-                    <option value="Option3">Option C</option>
-                    <option value="Option4">Option D</option>
+                    <option selected disabled value="">Choose correct option</option>
+                    <option value="1">Option A</option>
+                    <option value="2">Option B</option>
+                    <option value="3">Option C</option>
+                    <option value="4">Option D</option>
                 </select>
                 
                 <button type="submit" id="button">Add Question</button>
 
                 <div class="subjects"  name="count-subject">
-                    <div class="science subj">
+                    <div class="science subj" data-subject="science">
                         <div class="content">
-                        <p class="count">5</p>
+                        <p class="count">0</p>
                         <p>Science</p>
                         </div>
                     </div>
-                    <div class="mathematics subj">
+                    <div class="mathematics subj" data-subject="mathematics">
                         <div class="content">
-                        <p class="count">5</p>
+                        <p class="count">0</p>
                         <p>Mathematics</p>
                         </div>
                     </div>
-                    <div class="english subj">
+                    <div class="english subj" data-subject="english">
                         <div class="content">
-                        <p class="count">5</p>
+                        <p class="count">0</p>
                         <p>English</p>
                         </div>
                     </div>
-                    <div class="gk subj">
+                    <div class="gk subj" data-subject="general-knowledge">
                         <div class="content">
-                        <p class="count">5</p>
+                        <p class="count">0</p>
                         <p>Gen.Knowledge</p>
                         </div>
                     </div>
@@ -92,6 +93,7 @@
             </form>
         </main>
     </div>
-    
+
+    <script src="js/admin.js"></script>
 </body>
 </html>
